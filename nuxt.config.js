@@ -2,6 +2,10 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  modules: [
+    'nuxt-fontawesome' //ここに追記
+  ],
+
   head: {
     title: 'pop-idea',
     meta: [
@@ -34,6 +38,23 @@ module.exports = {
         })
       }
     }
-  }
+  },
+
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      }
+    ]
+  },
+  /*
+  ** Include css not in components
+  */
+  css: [
+    // node.js module but we specify the pre-processor
+    { src: "~assets/main.scss", lang: "scss" }
+    //{ src: 'bulma/bulma.sass', lang: 'sass' }
+  ],
 }
 

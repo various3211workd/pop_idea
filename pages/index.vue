@@ -1,18 +1,33 @@
 <template>
-  <div id="app">
-    <textarea />
-    <br>
-    <button v-on:click="doAdd()">追加</button>
-
-    <draggable v-model="list" element="ul" :options="{animation:300}">
-      <li v-for="item in list" :key="item.id">
-        {{ item.id }}
-        <textarea class=""/>
-        <br>
-        <button v-on:click="doAdd()">追加</button>
-        <button v-on:click="doRemove(item)">削除</button>
-      </li>
-    </draggable>
+  <div>
+    <div class="container">
+      <div id="app">
+        <div class="content has-text-centered">
+          <draggable v-model="list" element="ul" :options="{animation:300}">
+            <div v-for="item in list" :key="item.id">
+              <input style="width: 30%" class="input is-large" type="text" />
+              <button class="button is-success" v-on:click="doAdd()">Add</button>
+              <button class="button is-danger" v-on:click="doRemove(item)">Delete</button>
+              <br>
+              <font-awesome-icon class="icon is-large" icon="arrow-down" />
+              <br>
+              <br>
+            </div>
+          </draggable>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="columns">
+        <div class="column">
+          <div class="content has-text-centered">
+            <p>pop idea</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
   </div>
 </template>
 
@@ -26,26 +41,19 @@ export default {
   data() {
     return {
       list: [
+        {
+          id: 1,
+        }
       ],
-      nextTodoId: 1
+      nextTodoId: 2
     };
   },
   methods: {
     doAdd: function() {
       this.list.push({
         id: this.nextTodoId++,
-        name: "fff"
       })
     },
-    /*
-    doAdd: function(item) {
-      this.list.push({
-        id: this.nextTodoId++,
-        name: 'fff',
-        children: [],
-      })
-    },
-    */
     doRemove: function(item) {
       var index = this.list.indexOf(item)
       this.list.splice(index, 1)
@@ -53,10 +61,3 @@ export default {
   }
 };
 </script>
-
-<style>
-  textarea {
-    resize: none;
-    overflow: auto;
-  }
-</style>
