@@ -31,12 +31,12 @@
           <div v-else>
             <button class="button is-success" v-on:click="doAdd()">Add</button>
             <button class="button is-danger" v-on:click="doRemove(item)">Delete</button>
+            <br><br><br><br>
           </div>
         </div>
       </div>
     </div>
-    
-    <footer class="footer">
+    <footer class="footer is-danger">
       <div class="columns">
         <div class="column">
           <div class="content has-text-centered">
@@ -81,60 +81,3 @@ export default {
 };
 
 </script>
-
-<style>
-.footer {
-  background-color: white;
-}
-
-.tabs {
-  margin : 0 auto;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-/*タブのスタイル*/
-.tab_item {
-  width: 30%;
-  height: 50px;
-  border-bottom: 3px solid #5ab4bd;
-  background-color: #d9d9d9;
-  line-height: 50px;
-  font-size: 16px;
-  text-align: center;
-  color: #565656;
-  display: block;
-  float: left;
-  text-align: center;
-  font-weight: bold;
-}
-.tab_item:hover {
-  opacity: 0.75;
-}
-
-/*ラジオボタンを全て消す*/
-input[name="tab_item"] {
-  display: none;
-}
-
-/*タブ切り替えの中身のスタイル*/
-.tab_content {
-  display: none;
-  padding: 40px 40px 0;
-  clear: both;
-  overflow: hidden;
-}
-
-/*選択されているタブのコンテンツのみを表示*/
-#word:checked ~ #word_content,
-#draw:checked ~ #draw_content,
-#design:checked ~ #design_content {
-  display: block;
-}
-
-/*選択されているタブのスタイルを変える*/
-.tabs input:checked + .tab_item {
-  background-color: #5ab4bd;
-  color: #fff;
-}
-</style>

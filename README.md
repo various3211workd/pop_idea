@@ -2,6 +2,7 @@
 
 > Nuxt.js project
 
+Vue.js学習用  
 しりとり法でアイデアを出すときに使用すると楽しくなるようなページを作成する。
 
 ## Build Setup
