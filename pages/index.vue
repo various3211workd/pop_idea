@@ -1,19 +1,41 @@
 <template>
-  <div>
+  <div style="background-color: #333">
+    <header class="hero is-danger">
+      <b class="hero-body">
+        <h2 class="title">POP Idea</h2>
+      </b>
+    </header>
+
     <div class="container">
       <div id="app">
         <div class="content has-text-centered">
-          <draggable v-model="list" element="ul" :options="{animation:300}">
-            <div v-for="item in list" :key="item.id">
-              <input style="width: 30%" class="input is-large" type="text" />
-              <button class="button is-success" v-on:click="doAdd()">Add</button>
-              <button class="button is-danger" v-on:click="doRemove(item)">Delete</button>
-              <br>
-              <font-awesome-icon class="icon is-large" icon="arrow-down" />
-              <br>
-              <br>
+          <div clas="tabs">
+            <input id="word" type="radio" name="tab_item" checked>
+            <label class="tab_item" for="word">word</label>
+            <input id="draw" type="radio" name="tab_item">
+            <label class="tab_item" for="draw">draw</label>
+            <div class="tab_content" id="word_content">
+          
+                <draggable v-model="list" element="ul" :options="{animation:300}">
+                  <div v-for="item in list" :key="item.id">
+                    <input class="input is-large" type="text" style="width: 30%" />
+                    <br><br>
+                    <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-down" />
+                    <br><br>
+                  </div>
+                  <br><br>
+                </draggable>
+              <p v-if="nextTodoId > 3">
+                <div style="#FFFF99">
+                </div>
+              </p>
+              <p v-else>
+                <button class="button is-success" v-on:click="doAdd()">Add</button>
+                <button class="button is-danger" v-on:click="doRemove(item)">Delete</button>
+              </p>
+          
             </div>
-          </draggable>
+          </div>
         </div>
       </div>
     </div>
@@ -45,7 +67,7 @@ export default {
           id: 1,
         }
       ],
-      nextTodoId: 2
+      nextTodoId: 2,
     };
   },
   methods: {
@@ -55,9 +77,68 @@ export default {
       })
     },
     doRemove: function(item) {
+      this.nextTodoId--
       var index = this.list.indexOf(item)
       this.list.splice(index, 1)
     }
-  }
+  },
 };
+
 </script>
+
+<style>
+.footer {
+  background-color: white;
+}
+
+.tabs {
+  margin : 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/*タブのスタイル*/
+.tab_item {
+  width: 30%;
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+/*選択されているタブのコンテンツのみを表示*/
+#word:checked ~ #word_content,
+#draw:checked ~ #draw_content,
+#design:checked ~ #design_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+}
+</style>
