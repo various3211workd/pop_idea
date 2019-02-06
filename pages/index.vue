@@ -9,33 +9,40 @@
     <div class="container">
       <div id="app">
         <div class="content has-text-centered">
+          <!--
           <div clas="tabs">
             <input id="word" type="radio" name="tab_item" checked>
             <label class="tab_item" for="word">word</label>
             <input id="draw" type="radio" name="tab_item">
             <label class="tab_item" for="draw">draw</label>
             <div class="tab_content" id="word_content">
-          
+            -->
+              <div style="background-color: #FFCC99">
+                <br><br><br><br>
+              </div>
+              <br><br>
+              <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-down" />
+              <br><br>
                 <draggable v-model="list" element="ul" :options="{animation:300}">
                   <div v-for="item in list" :key="item.id">
                     <input class="input is-large" type="text" style="width: 30%" />
                     <br><br>
-                    <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-down" />
                     <br><br>
                   </div>
                   <br><br>
                 </draggable>
-              <p v-if="nextTodoId > 3">
-                <div style="#FFFF99">
+              <div v-if="nextTodoId > 5">
+                <div style="background-color: #FFCC99">
+                  <br><br><br><br>
                 </div>
-              </p>
-              <p v-else>
+              </div>
+              <div v-else>
                 <button class="button is-success" v-on:click="doAdd()">Add</button>
                 <button class="button is-danger" v-on:click="doRemove(item)">Delete</button>
-              </p>
-          
+              </div>
+            <!--
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
