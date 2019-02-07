@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #333">
+  <div style="background-color: #333;">
     <header class="hero is-danger">
       <b class="hero-body">
         <h2 class="title">POP Idea</h2>
@@ -9,29 +9,29 @@
     <div class="container">
       <div id="app">
         <div class="content has-text-centered">
-          <div style="background-color: #FFCC99">
-            <br><br><br><br>
-          </div>
-          <br><br>
-          <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-down" />
-          <br><br>
-            <draggable v-model="list" element="ul" :options="{animation:300}">
-              <div v-for="item in list" :key="item.id">
-                <input class="input is-large" type="text" style="width: 30%" />
-                <br><br>
-                <br><br>
-              </div>
-              <br><br>
-            </draggable>
           <div v-if="nextTodoId > 5">
             <div style="background-color: #FFCC99">
               <br><br><br><br>
             </div>
           </div>
           <div v-else>
+            <br><br>
             <button class="button is-success" v-on:click="doAdd()">Add</button>
             <button class="button is-danger" v-on:click="doRemove(item)">Delete</button>
-            <br><br><br><br>
+            <br><br>
+          </div>
+          <br><br>
+            <draggable v-model="list" element="ul" :options="{animation:300}">
+              <div v-for="item in list" :key="item.id">
+                <input class="input is-large" type="text" style="width: 30%" />
+                <br><br><br><br>
+              </div>
+              <br><br>
+            </draggable>
+          <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-up" />
+          <br><br>
+          <div style="background-color: #FFCC99">
+              <br><br><br><br>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     doAdd: function() {
-      this.list.push({
+      this.list.unshift({
         id: this.nextTodoId++,
       })
     },
