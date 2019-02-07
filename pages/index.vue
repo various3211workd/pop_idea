@@ -13,7 +13,9 @@
         <div class="content has-text-centered">
           <div v-if="nextTodoId > 5">
             <div style="background-color: #FFCC99">
-              <br><br><br><br>
+              <br><br>
+              <font-awesome-icon class="icon is-large" icon="shoe-prints" style="transform: rotate(-90deg);" />
+              <br><br>
             </div>
           </div>
           
@@ -21,14 +23,16 @@
           <draggable v-model="list" element="ul" :options="{animation:300}">
             <div v-for="item in list" :key="item.id">
               <input class="input is-large" type="text" style="width: 30%" />
-              <br><br><br><br>
+              <br><br>
+              <font-awesome-icon 
+                class="icon is-large shoe" 
+                icon="shoe-prints"  
+              />
+              <br><br>
             </div>
             <br><br>
           </draggable>
 
-          <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-up" />
-
-          
           <div v-if="nextTodoId <= 5">
             <div class="sticky">
               <img :src="this.signal_icon" />
@@ -45,11 +49,11 @@
               </div>
             </div>
           </div>
-
           <br><br>
-          
           <div style="background-color: #FFCC99">
-            <br><br><br><br>
+            <br><br>
+            <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
+            <br><br>
           </div>
         </div>
       </div>
@@ -101,27 +105,30 @@ export default {
       this.nextTodoId--
       var index = this.list.indexOf(item)
       this.list.splice(index, 1)
-    }
+    },
   },
 };
 
 </script>
 
-<style>
+<style scoped lang="scss">
 .sticky {
   right: -250px;
   position: -webkit-sticky;
   position: fixed;
-  bottom: 10%;
+  bottom: 15%;
   background-repeat: no-repeat;
 }
 .cover {
   position: absolute;
-  right: 49%;
+  right: 48.5%;
   top: 0px;
 }
 .sticky img {
   width: 30%;
 }
-
+.shoe {
+  transform: rotate(-90deg);
+  right: random(100) + px;
+}
 </style>
