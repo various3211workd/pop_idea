@@ -28,10 +28,7 @@
 
           <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-up" />
 
-          <div class="sticky">
-          <!--
-          <div :style="{'background-image': `url(${require('../static/signal.png')})`}">
-          -->
+          <div :style="{'background-image': `url(${require('../static/signal.png')})`}" class="sticky" >
             <div v-if="nextTodoId <= 5">
               <br><br>
               <button class="button is-success" v-on:click="doAdd()">
@@ -48,6 +45,7 @@
           </div>
 
           <br><br>
+          
           <div style="background-color: #FFCC99">
             <br><br><br><br>
           </div>
@@ -109,9 +107,10 @@ export default {
 
 <style>
 .sticky {
+  left: 10%;
   position: -webkit-sticky;
   position: sticky;
   bottom: 10%;
-  background-image: url('../static/signal.png'),
+  background-repeat: no-repeat;
 }
 </style>
