@@ -16,18 +16,7 @@
               <br><br><br><br>
             </div>
           </div>
-          <div v-else>
-            <br><br>
-            <button class="button is-success" v-on:click="doAdd()">
-              <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'plus-circle' ]" />
-              <p>Add</p>
-            </button>
-            <button class="button is-danger" v-on:click="doRemove(item)">
-              <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'minus-circle' ]" />
-              <p>Delete</p>
-            </button>
-            <br><br>
-          </div>
+          
           <br><br>
           <draggable v-model="list" element="ul" :options="{animation:300}">
             <div v-for="item in list" :key="item.id">
@@ -36,16 +25,36 @@
             </div>
             <br><br>
           </draggable>
+
           <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-up" />
+
+          <div class="sticky">
+          <!--
+          <div :style="{'background-image': `url(${require('../static/signal.png')})`}">
+          -->
+            <div v-if="nextTodoId <= 5">
+              <br><br>
+              <button class="button is-success" v-on:click="doAdd()">
+                <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'plus-circle' ]" />
+                <p>Add</p>
+              </button>
+              <br><br>
+              <button class="button is-danger" v-on:click="doRemove(item)">
+                <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'minus-circle' ]" />
+                <p>Delete</p>
+              </button>
+              <br><br>
+            </div>
+          </div>
 
           <br><br>
           <div style="background-color: #FFCC99">
-              <br><br><br><br>
+            <br><br><br><br>
           </div>
         </div>
       </div>
     </div>
-
+    
     <footer class="footer hero is-danger has-text-centered has-text-white-bis">
       <div class="navbar-center">
         <a href="https://github.com/various3211workd/pop_idea">
@@ -79,6 +88,7 @@ export default {
         }
       ],
       nextTodoId: 2,
+      signal_icon: require("~/static/signal.png"),
     };
   },
   methods: {
@@ -96,3 +106,12 @@ export default {
 };
 
 </script>
+
+<style>
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 10%;
+  background-image: url('../static/signal.png'),
+}
+</style>
