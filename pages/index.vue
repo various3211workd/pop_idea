@@ -28,19 +28,21 @@
 
           <font-awesome-icon class="icon is-large has-text-danger" icon="arrow-up" />
 
-          <div :style="{'background-image': `url(${require('../static/signal.png')})`}" class="sticky" >
-            <div v-if="nextTodoId <= 5">
-              <br><br>
-              <button class="button is-success" v-on:click="doAdd()">
-                <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'plus-circle' ]" />
-                <p>Add</p>
-              </button>
-              <br><br>
-              <button class="button is-danger" v-on:click="doRemove(item)">
-                <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'minus-circle' ]" />
-                <p>Delete</p>
-              </button>
-              <br><br>
+          
+          <div v-if="nextTodoId <= 5">
+            <div class="sticky">
+              <img :src="this.signal_icon" />
+              <div class="cover">
+                <br><br>
+                <button class="button is-success is-large" v-on:click="doAdd()">
+                  <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
+                </button>
+                <br><br>
+                <button class="button is-danger is-large" v-on:click="doRemove(item)">
+                  <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'male' ]" />
+                </button>
+                <br><br>
+              </div>
             </div>
           </div>
 
@@ -67,11 +69,11 @@
 <script>
 import draggable from "vuedraggable";
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fab, faGithub } from '@fortawesome/free-brands-svg-icons'
 
-library.add(fab, fas, faGithub, faPlusCircle, faMinusCircle)
+library.add(fab, fas, faGithub)
 
 export default {
   components: {
@@ -107,10 +109,19 @@ export default {
 
 <style>
 .sticky {
-  left: 10%;
+  right: -250px;
   position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   bottom: 10%;
   background-repeat: no-repeat;
 }
+.cover {
+  position: absolute;
+  right: 49%;
+  top: 0px;
+}
+.sticky img {
+  width: 30%;
+}
+
 </style>
