@@ -16,19 +16,26 @@
 
     <div class="container">
       <div id="app">
+        
         <div class="content has-text-centered">
-          <div v-if="nextTodoId > 5">            
+          <div v-if="nextTodoId > this.num + 1">            
             <div class="streat">
               <img :src="commit_icon" />
             </div><br><br>
             <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
-            <div class="modal_overlay">
-              <div class="modal_content">
-                <label for="trigger" class="close_button">✖️</label>
-                <h2>Congrats!!</h2>
-                <div v-for="item in list" :key="item.id">
-                  <p>{{ item.text }}</p>
-                  <font-awesome-icon class="icon has-text-info" icon="arrow-down" />
+            
+            <label for="trigger" class="open_button">Result</label>
+            <div class="modal_wrap">
+            <input id="trigger" type="checkbox">
+              <div class="modal_overlay">
+                <label for="trigger" class="modal_trigger"></label>
+                <div class="modal_content">
+                  <label for="trigger" class="close_button">✖️</label>
+                  <h2>Congrats!!</h2>
+                  <div v-for="item in list" :key="item.id">
+                    <p>{{ item.text }}</p>
+                    <font-awesome-icon class="icon has-text-info" icon="arrow-down" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -39,28 +46,20 @@
           <draggable v-model="list" element="ul" :options="{animation:300}">
             <div v-for="item in list" :key="item.id">
               <input v-model="item.text" class="input is-large" type="text" style="width: 30%">
-              <br><br><br>
-              <font-awesome-icon 
-                class="icon is-large shoe" 
-                icon="shoe-prints"  
-              />
+              <br><br><br><br>
+              <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
               <br><br><br>
             </div>
             <br><br>
           </draggable>
 
-          <div v-if="nextTodoId <= 5">
+          <div v-if="nextTodoId <= this.num + 1">
             <div class="sticky">
               <img :src="this.signal_icon" />
               <div class="cover">
                 <br><br>
-                <div v-if="this.word === this.message.slice(0, 1)">
+                <div v-if="nextTodoId <= this.num + 1">
                   <button class="button is-success is-large" v-on:click="doAdd()">
-                    <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
-                  </button>
-                </div>
-                <div v-else>
-                  <button disabled class="button is-success is-large" v-on:click="doAdd()">
                     <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
                   </button>
                 </div>
@@ -109,6 +108,7 @@ export default {
       nextTodoId: 2,
       message: "",
       word: "",
+      num: 5,
       signal_icon: require("~/static/signal.png"),
       streat_icon: require("~/static/streat.png"),
       commit_icon: require("~/static/commit.png"),
@@ -124,7 +124,7 @@ export default {
     doRemove: function(item) {
       this.nextTodoId--
       var index = this.list.indexOf(item)
-      this.list.splice(index, 1)
+      this.list.shift();
     },
   },
 };
