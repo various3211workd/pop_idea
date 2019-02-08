@@ -1,34 +1,47 @@
 <template>
   <div style="background-color: #333;">
-    <header class="hero has-shadow is-danger">
-      <div class="hero-body">
-        <a href="https://elastic-gates-511a51.netlify.com">
-          <h2 class="title">POP Idea</h2>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://elastic-gates-511a51.netlify.com">
+          <!--
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+          -->
+          <p style="font-size: 30px; font-family: Impact, Charcoal;">PoP IdeA</p>
+        </a>
+        <a href="https://github.com/various3211workd/pop_idea">
+          <font-awesome-icon class="icon is-large has-text-grey" :icon="[ 'fab', 'github' ]" />
         </a>
       </div>
-    </header>
+      <!--
+      <div class="navbar-end">
+        <a href="https://github.com/various3211workd/pop_idea">
+          <font-awesome-icon class="icon is-large has-text-grey" :icon="[ 'fab', 'github' ]" />
+        </a>
+      </div>
+      -->
+    </nav>
 
     <div class="container">
       <div id="app">
         <div class="content has-text-centered">
           <div v-if="nextTodoId > 5">
-            <div style="background-color: #FFCC99">
-              <br><br>
-              <font-awesome-icon class="icon is-large" icon="shoe-prints" style="transform: rotate(-90deg);" />
-              <br><br>
-            </div>
+            <div class="streat">
+              <img :src="commit_icon" />
+            </div><br><br>
+            <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
           </div>
           
-          <br><br>
+          <br><br><br><br><br><br><br><br>
+          
           <draggable v-model="list" element="ul" :options="{animation:300}">
             <div v-for="item in list" :key="item.id">
-              <input class="input is-large" type="text" style="width: 30%" />
-              <br><br>
+              <input v-model="item.text" class="input is-large" type="text" style="width: 30%">
+              <br><br><br>
               <font-awesome-icon 
                 class="icon is-large shoe" 
                 icon="shoe-prints"  
               />
-              <br><br>
+              <br><br><br>
             </div>
             <br><br>
           </draggable>
@@ -38,10 +51,17 @@
               <img :src="this.signal_icon" />
               <div class="cover">
                 <br><br>
-                <button class="button is-success is-large" v-on:click="doAdd()">
-                  <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
-                </button>
-                <br><br>
+                <div v-if="this.word === this.message.slice(0, 1)">
+                  <button class="button is-success is-large" v-on:click="doAdd()">
+                    <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
+                  </button>
+                </div>
+                <div v-else>
+                  <button disabled class="button is-success is-large" v-on:click="doAdd()">
+                    <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
+                  </button>
+                </div>
+                <br>
                 <button class="button is-danger is-large" v-on:click="doRemove(item)">
                   <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'male' ]" />
                 </button>
@@ -49,24 +69,15 @@
               </div>
             </div>
           </div>
-          <br><br>
-          <div style="background-color: #FFCC99">
-            <br><br>
-            <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
-            <br><br>
+          
+          <br><br><br><br><br><br><br><br>
+          
+          <div class="streat">
+            <img :src="streat_icon" />
           </div>
         </div>
       </div>
     </div>
-    
-    <footer class="footer hero is-danger has-text-centered has-text-white-bis">
-      <div class="navbar-center">
-        <a href="https://github.com/various3211workd/pop_idea">
-          <font-awesome-icon class="icon is-large" :icon="[ 'fab', 'github' ]" />
-        </a>
-      </div>
-    </footer>
-  
   </div>
 </template>
 
@@ -89,15 +100,21 @@ export default {
       list: [
         {
           id: 1,
+          text: "",
         }
       ],
       nextTodoId: 2,
+      message: "",
+      word: "",
       signal_icon: require("~/static/signal.png"),
+      streat_icon: require("~/static/streat.png"),
+      commit_icon: require("~/static/commit.png"),
     };
   },
   methods: {
     doAdd: function() {
       this.list.unshift({
+        text: this.message,
         id: this.nextTodoId++,
       })
     },
@@ -130,5 +147,13 @@ export default {
 .shoe {
   transform: rotate(-90deg);
   right: random(100) + px;
+  color: gray;
+}
+.streat img {
+  width: 100%;
+}
+.footer { 
+  width: 100%;
+  bottom: 0;
 }
 </style>
