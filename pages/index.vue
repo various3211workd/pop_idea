@@ -16,7 +16,7 @@
         <div class="content has-text-centered">
           
           <!-- view compoment -->
-          <div v-if="nextTodoId > this.num + 1">     
+          <div v-if="nextTodoId > this.num + 1">
             <!-- commit streat -->       
             <div class="streat">
               <img :src="commit_icon" />
@@ -26,18 +26,18 @@
             <!-- modle window -->  
             <label for="trigger" class="open_button">Result</label>
             <div class="modal_wrap">
-            <input id="trigger" type="checkbox">
+            <input id="trigger" type="checkbox" :checked="this.pop_flag" v-on="this.pop_flag = true">
               <div class="modal_overlay">
                 <label for="trigger" class="modal_trigger"></label>
                 <div class="modal_content">
                   <label for="trigger" class="close_button">✖️</label>
-                  <h2>Congrats!!</h2>
-                  <h3>START</h3>
+                  <h1>Congrats!!</h1>
+                  <h2>START</h2>
                   <div v-for="item in list" :key="item.id">
-                    <p>{{ item.text }}</p>
+                    <h3>{{ item.text }}</h3>
                     <font-awesome-icon class="icon has-text-info" icon="arrow-down" />
                   </div>
-                  <h3>END</h3>
+                  <h2>END</h2>
                 </div>
               </div>
             </div>
@@ -112,6 +112,7 @@ export default {
       ],
       nextTodoId: 2,                                // list next id
       num: 5,                                       // count number
+      pop_flag: false,                              // modle flag
       signal_icon: require("~/static/signal.png"),
       streat_icon: require("~/static/streat.png"),
       commit_icon: require("~/static/commit.png"),
