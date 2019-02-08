@@ -3,20 +3,16 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="https://elastic-gates-511a51.netlify.com">
-          <!--
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-          -->
           <p style="font-size: 30px; font-family: Impact, Charcoal;">PoP IdeA</p>
         </a>
         <a href="https://github.com/various3211workd/pop_idea">
-          <font-awesome-icon class="icon is-large has-text-grey" :icon="[ 'fab', 'github' ]" />
+          <font-awesome-icon class="icon is-large has-text-dark" :icon="[ 'fab', 'github' ]" />
         </a>
       </div>
     </nav>
 
     <div class="container">
       <div id="app">
-        
         <div class="content has-text-centered">
           <div v-if="nextTodoId > this.num + 1">            
             <div class="streat">
@@ -32,10 +28,12 @@
                 <div class="modal_content">
                   <label for="trigger" class="close_button">✖️</label>
                   <h2>Congrats!!</h2>
+                  <h3>START</h3>
                   <div v-for="item in list" :key="item.id">
                     <p>{{ item.text }}</p>
                     <font-awesome-icon class="icon has-text-info" icon="arrow-down" />
                   </div>
+                  <h3>END</h3>
                 </div>
               </div>
             </div>
@@ -71,9 +69,8 @@
               </div>
             </div>
           </div>
-          
-          <br><br><br><br><br><br><br><br>
-          
+
+          <br><br><br><br><br>
           <div class="streat">
             <img :src="streat_icon" />
           </div>
@@ -106,7 +103,7 @@ export default {
         }
       ],
       nextTodoId: 2,
-      message: "",
+      message: '',
       word: "",
       num: 5,
       signal_icon: require("~/static/signal.png"),
@@ -116,10 +113,20 @@ export default {
   },
   methods: {
     doAdd: function() {
-      this.list.unshift({
-        text: this.message,
-        id: this.nextTodoId++,
-      })
+      if( this.list[0].text ){
+        if( this.list.length == 1 ){
+          this.list.unshift({
+            text: this.message,
+            id: this.nextTodoId++,
+          })
+        }
+        else if( (this.list[0].text).slice(0,1) === (this.list[1].text).slice(-1) ){
+          this.list.unshift({
+            text: this.message,
+            id: this.nextTodoId++,
+          })
+        }
+      }
     },
     doRemove: function(item) {
       this.nextTodoId--
