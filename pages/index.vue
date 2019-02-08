@@ -12,23 +12,26 @@
           <font-awesome-icon class="icon is-large has-text-grey" :icon="[ 'fab', 'github' ]" />
         </a>
       </div>
-      <!--
-      <div class="navbar-end">
-        <a href="https://github.com/various3211workd/pop_idea">
-          <font-awesome-icon class="icon is-large has-text-grey" :icon="[ 'fab', 'github' ]" />
-        </a>
-      </div>
-      -->
     </nav>
 
     <div class="container">
       <div id="app">
         <div class="content has-text-centered">
-          <div v-if="nextTodoId > 5">
+          <div v-if="nextTodoId > 5">            
             <div class="streat">
               <img :src="commit_icon" />
             </div><br><br>
             <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
+            <div class="modal_overlay">
+              <div class="modal_content">
+                <label for="trigger" class="close_button">✖️</label>
+                <h2>Congrats!!</h2>
+                <div v-for="item in list" :key="item.id">
+                  <p>{{ item.text }}</p>
+                  <font-awesome-icon class="icon has-text-info" icon="arrow-down" />
+                </div>
+              </div>
+            </div>
           </div>
           
           <br><br><br><br><br><br><br><br>
@@ -152,8 +155,5 @@ export default {
 .streat img {
   width: 100%;
 }
-.footer { 
-  width: 100%;
-  bottom: 0;
-}
+
 </style>
