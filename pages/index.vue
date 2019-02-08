@@ -14,12 +14,16 @@
     <div class="container">
       <div id="app">
         <div class="content has-text-centered">
-          <div v-if="nextTodoId > this.num + 1">            
+          
+          <!-- view compoment -->
+          <div v-if="nextTodoId > this.num + 1">     
+            <!-- commit streat -->       
             <div class="streat">
               <img :src="commit_icon" />
             </div><br><br>
             <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
             
+            <!-- modle window -->  
             <label for="trigger" class="open_button">Result</label>
             <div class="modal_wrap">
             <input id="trigger" type="checkbox">
@@ -41,6 +45,7 @@
           
           <br><br><br><br><br><br><br><br>
           
+          <!-- draggble input form -->
           <draggable v-model="list" element="ul" :options="{animation:300}">
             <div v-for="item in list" :key="item.id">
               <input v-model="item.text" class="input is-large" type="text" style="width: 30%">
@@ -51,6 +56,7 @@
             <br><br>
           </draggable>
 
+          <!-- view signal graph, walk and stop button -->
           <div v-if="nextTodoId <= this.num + 1">
             <div class="sticky">
               <img :src="this.signal_icon" />
@@ -71,6 +77,8 @@
           </div>
 
           <br><br><br><br><br>
+          
+          <!-- view streat graph -->
           <div class="streat">
             <img :src="streat_icon" />
           </div>
@@ -102,16 +110,17 @@ export default {
           text: "",
         }
       ],
-      nextTodoId: 2,
-      message: '',
-      word: "",
-      num: 5,
+      nextTodoId: 2,                                // list next id
+      num: 5,                                       // count number
       signal_icon: require("~/static/signal.png"),
       streat_icon: require("~/static/streat.png"),
       commit_icon: require("~/static/commit.png"),
     };
   },
   methods: {
+    /*
+      pushed list function
+    */
     doAdd: function() {
       if( this.list[0].text ){
         if( this.list.length == 1 ){
@@ -128,6 +137,9 @@ export default {
         }
       }
     },
+    /*
+      poped list function
+    */
     doRemove: function(item) {
       this.nextTodoId--
       var index = this.list.indexOf(item)
