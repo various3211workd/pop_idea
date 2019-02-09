@@ -58,7 +58,7 @@
           <!-- draggble input form -->
           <draggable v-model="list" element="ul" :options="{animation:300}">
             <div v-for="item in list" :key="item.id">
-              <input :refs="item.id" v-model="item.text" class="input is-large" type="text" style="width: 30%">
+              <input v-model="item.text" class="input is-large" type="text" style="width: 30%">
               <br><br><br><br>
               <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
               <br><br><br>
@@ -72,12 +72,10 @@
               <img :src="this.signal_icon" />
               <div class="cover">
                 <br><br>
-                <div v-if="nextTodoId <= this.num + 1">
-                  <button class="button is-success is-large" v-on:click="doAdd()">
-                    <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
-                  </button>
-                </div>
-                <br>
+                <button class="button is-success is-large" v-on:click="doAdd()">
+                  <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'walking' ]" />
+                </button>
+                <br><br>
                 <button class="button is-danger is-large" v-on:click="doRemove(item)">
                   <font-awesome-icon class="icon is-large" :icon="[ 'fas', 'male' ]" />
                 </button>
@@ -143,10 +141,15 @@ export default {
           this.error_message = ""
         }
         else if( (this.list[0].text).slice(0,1) === (this.list[1].text).slice(-1) && this.list[0].text !== this.list[1].text ){
-          this.list.unshift({
-            text: this.message,
-            id: this.nextTodoId++,
-          })
+          if( this.list.length < this.num ) {
+            this.list.unshift({
+              text: this.message,
+              id: this.nextTodoId++,
+            })
+          } else {
+            this.nextTodoId++
+            this.pop_flag = true
+          }
           this.error_message = ""
         }
         else {
