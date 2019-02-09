@@ -2,10 +2,10 @@
   <div style="background-color: #333;">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://elastic-gates-511a51.netlify.com">
+        <a class="navbar-item" href="https://elastic-gates-511a51.netlify.com" target="_blank">
           <p style="font-size: 30px; font-family: Impact, Charcoal;">PoP IdeA</p>
         </a>
-        <a href="https://github.com/various3211workd/pop_idea">
+        <a href="https://github.com/various3211workd/pop_idea" target="_blank">
           <font-awesome-icon class="icon is-large has-text-dark" :icon="[ 'fab', 'github' ]" />
         </a>
       </div>
