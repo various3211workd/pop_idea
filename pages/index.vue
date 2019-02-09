@@ -26,14 +26,14 @@
             <!-- modle window -->  
             <label for="trigger" class="open_button">Result</label>
             <div class="modal_wrap">
-            <input id="trigger" type="checkbox" :checked="this.pop_flag" v-on="this.pop_flag = true">
+            <input id="trigger" type="checkbox" :checked="this.pop_flag">
               <div class="modal_overlay">
                 <label for="trigger" class="modal_trigger"></label>
                 <div class="modal_content">
                   <label for="trigger" class="close_button">✖️</label>
                   <h1>Congrats!!</h1>
                   <h2>START</h2>
-                  <div v-for="item in list" :key="item.id">
+                  <div v-for="item in list" :key="item.id - 1">
                     <h3>{{ item.text }}</h3>
                     <font-awesome-icon class="icon has-text-info" icon="arrow-down" />
                   </div>
@@ -43,12 +43,22 @@
             </div>
           </div>
           
-          <br><br><br><br><br><br><br><br>
+          <br>
+
+          <!-- error message view -->
+          <div v-if="this.error_message" class="error_message has-text-warning">
+            <div class="notification is-primary" style="width: 30%; margin: auto;">
+              <button class="delete"></button>
+              <strong>{{ this.error_message }}</strong>
+            </div>
+          </div>
           
+          <br><br><br><br><br><br><br>
+
           <!-- draggble input form -->
           <draggable v-model="list" element="ul" :options="{animation:300}">
             <div v-for="item in list" :key="item.id">
-              <input v-model="item.text" class="input is-large" type="text" style="width: 30%">
+              <input :refs="item.id" v-model="item.text" class="input is-large" type="text" style="width: 30%">
               <br><br><br><br>
               <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
               <br><br><br>
@@ -113,6 +123,7 @@ export default {
       nextTodoId: 2,                                // list next id
       num: 5,                                       // count number
       pop_flag: false,                              // modle flag
+      error_message: "",
       signal_icon: require("~/static/signal.png"),
       streat_icon: require("~/static/streat.png"),
       commit_icon: require("~/static/commit.png"),
@@ -129,13 +140,20 @@ export default {
             text: this.message,
             id: this.nextTodoId++,
           })
+          this.error_message = ""
         }
-        else if( (this.list[0].text).slice(0,1) === (this.list[1].text).slice(-1) ){
+        else if( (this.list[0].text).slice(0,1) === (this.list[1].text).slice(-1) && this.list[0].text !== this.list[1].text ){
           this.list.unshift({
             text: this.message,
             id: this.nextTodoId++,
           })
+          this.error_message = ""
         }
+        else {
+          this.error_message = "正しい文字を入力してください!"
+        }
+      } else {
+        this.error_message = "文字を入力してください!"
       }
     },
     /*
@@ -175,5 +193,4 @@ export default {
 .streat img {
   width: 100%;
 }
-
 </style>
