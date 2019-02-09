@@ -31,13 +31,19 @@
                 <label for="trigger" class="modal_trigger"></label>
                 <div class="modal_content">
                   <label for="trigger" class="close_button">✖️</label>
-                  <h1>Congrats!!</h1>
-                  <h2>START</h2>
+                  <h2>Congrats!!</h2>
+                  <h3>START</h3><br>
                   <div v-for="item in list" :key="item.id - 1">
-                    <h3>{{ item.text }}</h3>
+                    <p>{{ item.text }}</p>
                     <font-awesome-icon class="icon has-text-info" icon="arrow-down" />
                   </div>
-                  <h2>END</h2>
+                  <h3>END</h3>
+
+                  <h3>おすすめの組み合わせ
+                    <br>
+                    {{ list[Math.floor(Math.random() * list.length)].text }}
+                     + {{ list[Math.floor(Math.random() * list.length)].text }}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -196,4 +202,5 @@ export default {
 .streat img {
   width: 100%;
 }
+
 </style>
