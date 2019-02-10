@@ -9,7 +9,7 @@
         style="margin: 0 auto"
       />
     </div>
-    <div v-show="!loading" style="background-color: #333;">
+    <div v-show="!loading" style="background-color: #333; height: 100%;">
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://elastic-gates-511a51.netlify.com" target="_blank">
@@ -21,6 +21,14 @@
         </div>
       </nav>
 
+      <!-- clear streat image -->
+      <div v-if="nextTodoId > this.num + 1">
+        <div class="streat">
+          <img :src="commit_icon" /><br><br>
+        </div>
+      </div>
+
+      <!-- main app -->
       <div class="container">
         <div id="app">
           <div class="content has-text-centered">
@@ -41,10 +49,6 @@
 
             <!-- view compoment -->
             <div v-if="nextTodoId > this.num + 1">
-              <!-- commit streat -->       
-              <div class="streat">
-                <img :src="commit_icon" />
-              </div><br><br>
               <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
               
               <!-- modal window -->    
@@ -116,12 +120,12 @@
 
             <br><br><br><br><br>
             
-            <!-- view streat graph -->
-            <div class="streat">
-              <img :src="streat_icon" />
-            </div>
           </div>
         </div>
+      </div>
+      <!-- view streat graph -->
+      <div class="streat">
+        <img :src="streat_icon" />
       </div>
     </div>
   </div>
@@ -244,6 +248,7 @@ export default {
 }
 .streat img {
   width: 100%;
+  height: 100px;
 }
 
 </style>

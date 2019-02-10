@@ -15,8 +15,11 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
   },
+  plugins: [
+    { src: '~/plugins/vue-carousel', ssr: false }
+  ],
   /*
   ** Customize the progress bar color
   */
