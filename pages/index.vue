@@ -57,6 +57,10 @@
                           <p class="has-text-grey-darker is-size-4">
                             絵を描きたいけど、どんなポーズにしよう・・・
                           </p>
+                          <p class="has-text-grey-light is-size-6">
+                            何かアイデアを得たいと考えてるときに使用するのがおすすめです。<br>
+                            決しておもしろい文字を作成するために使わないようにしましょう
+                          </p>
                         </slide>
                         <slide>
                           <font-awesome-icon class="fas fa-10x has-text-info" icon="link" />
@@ -64,12 +68,19 @@
                           <p class="has-text-grey-darker is-size-4">
                             しりとりをする
                           </p>
+                          <p class="has-text-grey-light is-size-6">
+                            深く考えずにパッと出た単語を使うのがおすすめです！
+                          </p>
                         </slide>
                         <slide>
                           <font-awesome-icon class="fas fa-10x has-text-info" icon="lightbulb" />
                           <br><br><br><br>
                           <p class="has-text-grey-darker is-size-4">
                             つながった文字がアイデアになる！
+                          </p>
+                          <p class="has-text-grey-light is-size-6">
+                            カスケードクリーム + さらだあぶら<br>
+                            いい絵が描けそうだ！
                           </p>
                         </slide>
                       </carousel>
@@ -104,6 +115,16 @@
                       {{ list[Math.floor(Math.random() * list.length)].text }}
                       + {{ list[Math.floor(Math.random() * list.length)].text }}
                     </h3>
+                    <button class="button">
+                      <font-awesome-icon class="icon is-large has-text-info" :icon="[ 'fab', 'twitter' ]" />
+                      <p class="has-text-grey-light is-size-4">
+                        Tweet
+                      </p>
+                    </button>
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
+                      Tweet
+                    </a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                   </div>
                 </div>
               </div>
