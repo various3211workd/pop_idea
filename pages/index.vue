@@ -15,9 +15,14 @@
           <a class="navbar-item" href="https://elastic-gates-511a51.netlify.com" target="_blank">
             <p style="font-size: 30px; font-family: Impact, Charcoal;">PoP IdeA</p>
           </a>
-          <a href="https://github.com/various3211workd/pop_idea" target="_blank">
+          <a href="https://github.com/various3211workd/pop_idea" target="_blank" style="margin: 0 0 0 auto;">
             <font-awesome-icon class="icon is-large has-text-dark" :icon="[ 'fab', 'github' ]" />
           </a>
+          <!--
+          <a style="margin: 0 0 0 auto;">
+            <font-awesome-icon class="icon is-large has-text-info" :icon="[ 'fab', 'twitter' ]" />
+          </a>
+          -->
         </div>
       </nav>
 
@@ -41,7 +46,34 @@
                   <label for="trigger" class="modal_trigger"></label>
                   <div class="modal_content">
                     <label for="trigger" class="close_button"  v-on:click="desableFirst()">✖️</label>
-                    <h2>使い方説明</h2>
+                    <no-ssr>
+                      <carousel :per-page="1" :navigate-to="someLocalProperty" :mouse-drag="false">
+                        <slide>
+                          <img :src="streat_icon" />
+                        </slide>
+                        <slide>
+                          <font-awesome-icon class="fas fa-10x has-text-info" icon="drafting-compass" />
+                          <br><br><br><br>
+                          <p class="has-text-grey-darker is-size-4">
+                            絵を描きたいけど、どんなポーズにしよう・・・
+                          </p>
+                        </slide>
+                        <slide>
+                          <font-awesome-icon class="fas fa-10x has-text-info" icon="link" />
+                          <br><br><br><br>
+                          <p class="has-text-grey-darker is-size-4">
+                            しりとりをする
+                          </p>
+                        </slide>
+                        <slide>
+                          <font-awesome-icon class="fas fa-10x has-text-info" icon="lightbulb" />
+                          <br><br><br><br>
+                          <p class="has-text-grey-darker is-size-4">
+                            つながった文字がアイデアになる！
+                          </p>
+                        </slide>
+                      </carousel>
+                    </no-ssr>
                   </div>
                 </div>
               </div>
@@ -136,10 +168,10 @@ import draggable from "vuedraggable";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { fab, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { fab, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { SelfBuildingSquareSpinner } from 'epic-spinners/dist/lib/epic-spinners.min.js'
 
-library.add(fab, fas, faGithub)
+library.add(fab, fas, faGithub, faTwitter)
 
 export default {
   components: {
