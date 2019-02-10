@@ -207,9 +207,11 @@ export default {
       poped list function
     */
     doRemove: function(item) {
-      this.nextTodoId--
-      var index = this.list.indexOf(item)
-      this.list.shift();
+    if( this.nextTodoId != 2 ) {
+        this.nextTodoId--
+        var index = this.list.indexOf(item)
+        this.list.shift();
+      }
     },
     desableFirst: function() {
       this.first_flag = false
