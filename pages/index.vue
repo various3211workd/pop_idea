@@ -49,13 +49,18 @@
                     <no-ssr>
                       <carousel :per-page="1" :navigate-to="someLocalProperty" :mouse-drag="false">
                         <slide>
-                          <img :src="streat_icon" />
+                          <br><br>
+                          <p class="has-text-info is-size-3">
+                            POP IdeAへようこそ！
+                          </p>
+                          <font-awesome-icon class="fas fa-5x has-text-info" icon="exclamation" /><br><br>
+                          <font-awesome-icon class="fas fa-5x has-text-info" icon="brain" />
                         </slide>
                         <slide>
                           <font-awesome-icon class="fas fa-10x has-text-info" icon="drafting-compass" />
                           <br><br><br><br>
                           <p class="has-text-grey-darker is-size-4">
-                            絵を描きたいけど、どんなポーズにしよう・・・
+                            絵を描きたいけど、どんな題材にしよう・・・
                           </p>
                           <p class="has-text-grey-light is-size-6">
                             何かアイデアを得たいと考えてるときに使用するのがおすすめです。<br>
@@ -102,7 +107,9 @@
                   <label for="trigger" class="modal_trigger"></label>
                   <div class="modal_content">
                     <label for="trigger" class="close_button">✖️</label>
-                    <h2>Congrats!!</h2>
+                    <p class="has-text-grey-darker is-size-2">
+                      Congrats!!
+                    </p>
                     <h3>START</h3><br>
                     <div v-for="item in list" :key="item.id - 1">
                       <p>{{ item.text }}</p>
