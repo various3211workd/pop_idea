@@ -247,9 +247,10 @@ export default {
               text: this.message,
               id: this.nextTodoId++,
             })
-          } else {
+          } else { // clear
             this.nextTodoId++
             this.pop_flag = true
+            this.list.reverse()
           }
           this.error_message = ""
         }
