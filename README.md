@@ -1,6 +1,6 @@
 # pop-idea
 
-> Nuxt.js project
+![screen_image](https://user-images.githubusercontent.com/43775946/52620403-d6592400-2ee7-11e9-94f7-10ccf077bce9.PNG)
 
 Vue.js学習用  
 しりとり法でアイデアを出すときに使用すると楽しくなるようなページを作成する。
