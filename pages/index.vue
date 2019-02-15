@@ -101,6 +101,9 @@
               
               <!-- modal window -->    
               <label for="trigger" class="open_button">Result</label>
+              <button class="reset_button" v-on:click="reset()">
+                <font-awesome-icon icon="sync-alt" />
+              </button>
               <div class="modal_wrap">
               <input id="trigger" type="checkbox" :checked="this.pop_flag">
                 <div class="modal_overlay">
@@ -128,10 +131,6 @@
                         Tweet
                       </p>
                     </button>
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
-                      Tweet
-                    </a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                   </div>
                 </div>
               </div>
@@ -280,6 +279,13 @@ export default {
     },
     desableFirst: function() {
       this.first_flag = false
+    },
+    /*
+      parge reload
+    */
+    reset: function() {
+      this.nextTodoId = 2
+      this.list.splice(1);
     },
   },
 };

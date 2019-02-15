@@ -72,3 +72,23 @@
   border-radius: 16px;
   cursor: pointer;
 }
+
+.reset_button {
+  position: fixed;
+  z-index: 1;
+  top: 80%;
+  right: 0;
+  bottom: 0;
+  left: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin: auto;
+  padding: 8px 16px;
+  color: aliceblue;
+  background-color: rgb(61, 163, 231);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  border-radius: 16px;
+  cursor: pointer;
+}
