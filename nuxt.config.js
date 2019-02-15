@@ -3,9 +3,20 @@ module.exports = {
   ** Headers of the page
   */
   modules: [
-    'nuxt-fontawesome' //ここに追記
+    'nuxt-fontawesome',
+    '@nuxtjs/pwa',
   ],
-
+  manifest: {
+    name: 'pop-idea',
+    short_name: 'pop-idea',
+    title: 'pop-idea',
+    'og:title': 'pop-idea',
+    description: 'pop-idea',
+    'og:description': 'pop-idea',
+    lang: 'ja',
+    theme_color: '#ffffff',
+    background_color: '#ffffff'
+  },
   head: {
     title: 'pop-idea',
     meta: [
@@ -42,7 +53,9 @@ module.exports = {
       }
     }
   },
-
+  workbox: {
+    dev: true,
+  },
   fontawesome: {
     imports: [
       {

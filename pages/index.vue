@@ -109,7 +109,7 @@
                 <div class="modal_overlay">
                   <label for="trigger" class="modal_trigger"></label>
                   <div class="modal_content">
-                    <label for="trigger" class="close_button">✖️</label>
+                    <label for="trigger" class="close_button">x</label>
                     <p class="has-text-grey-darker is-size-2">
                       Congrats!!
                     </p>
