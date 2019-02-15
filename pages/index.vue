@@ -109,7 +109,7 @@
                 <div class="modal_overlay">
                   <label for="trigger" class="modal_trigger"></label>
                   <div class="modal_content">
-                    <label for="trigger" class="close_button">x</label>
+                    <label for="trigger" class="close_button">✖️</label>
                     <p class="has-text-grey-darker is-size-2">
                       Congrats!!
                     </p>
@@ -139,7 +139,7 @@
             <br>
 
             <!-- error message view -->
-            <div v-if="this.error_message" class="error_message has-text-warning">
+            <div v-if="this.error_message" class="error_message has-text-warning" style="min-width: 90vw">
               <div class="notification is-primary" style="width: 30%; margin: auto;">
                 <button class="delete"></button>
                 <strong>{{ this.error_message }}</strong>
@@ -151,7 +151,7 @@
             <!-- draggble input form -->
             <draggable v-model="list" element="ul" :options="{animation:300}">
               <div v-for="item in list" :key="item.id">
-                <input v-model="item.text" class="input is-large" type="text" style="width: 30%">
+                <input v-model="item.text" class="input is-large" type="text" style="width: 30%; min-width: 50vw">
                 <br><br><br><br>
                 <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
                 <br><br><br>
