@@ -5,6 +5,10 @@ module.exports = {
   modules: [
     'nuxt-fontawesome',
     '@nuxtjs/pwa',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-134067594-1'
+    }],
+
   ],
   manifest: {
     name: 'pop-idea',
