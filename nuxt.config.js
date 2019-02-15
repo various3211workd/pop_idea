@@ -8,7 +8,6 @@ module.exports = {
     ['@nuxtjs/google-analytics', {
       id: 'UA-134067594-1'
     }],
-
   ],
   manifest: {
     name: 'pop-idea',
