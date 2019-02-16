@@ -18,11 +18,6 @@
           <a href="https://github.com/various3211workd/pop_idea" target="_blank" style="margin: 0 0 0 auto;">
             <font-awesome-icon class="icon is-large has-text-dark" :icon="[ 'fab', 'github' ]" />
           </a>
-          <!--
-          <a style="margin: 0 0 0 auto;">
-            <font-awesome-icon class="icon is-large has-text-info" :icon="[ 'fab', 'twitter' ]" />
-          </a>
-          -->
         </div>
       </nav>
 
@@ -95,6 +90,20 @@
               </div>
             </div>
 
+            <!-- error message view -->
+            <div v-if="this.error_message" class="error_message has-text-warning">
+              <br>
+              <article class="message is-primary" style="max-width: 480px; margin: auto">
+                <div class="message-header">
+                  <p>Error!</p>
+                  <button class="delete" aria-label="delete" v-on:click="del_error_message()"></button>
+                </div>
+                <div class="message-body">
+                  <strong>{{ this.error_message }}</strong>
+                </div>
+              </article>
+            </div>
+
             <!-- view compoment -->
             <div v-if="nextTodoId > this.num + 1">
               <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
@@ -136,28 +145,18 @@
               </div>
             </div>
             
-            <br>
-
-            <!-- error message view -->
-            <div v-if="this.error_message" class="error_message has-text-warning" style="min-width: 90vw">
-              <div class="notification is-primary" style="width: 30%; margin: auto;">
-                <button class="delete"></button>
-                <strong>{{ this.error_message }}</strong>
-              </div>
-            </div>
-            
-            <br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
 
             <!-- draggble input form -->
-            <draggable v-model="list" element="ul" :options="{animation:300}">
+            <!-- <draggable v-model="list" element="ul" :options="{animation:300}"> -->
               <div v-for="item in list" :key="item.id">
-                <input v-model="item.text" class="input is-large" type="text" style="width: 30%; min-width: 50vw">
+                <input v-model="item.text" class="input is-large" type="text" style="width: 30%; max-width: 200px">
                 <br><br><br><br>
                 <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
                 <br><br><br>
               </div>
               <br><br>
-            </draggable>
+            <!-- </draggable> -->
 
             <!-- view signal graph, walk and stop button -->
             <div v-if="nextTodoId <= this.num + 1">
@@ -281,11 +280,17 @@ export default {
       this.first_flag = false
     },
     /*
-      parge reload
+      parge reload function
     */
     reset: function() {
       this.nextTodoId = 2
       this.list.splice(1);
+    },
+    /*
+      delete error message function
+    */
+    del_error_message: function() {
+      this.error_message = "";
     },
   },
 };

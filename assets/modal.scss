@@ -27,8 +27,7 @@
 .modal_content{
   position: relative;
   align-self: center;
-  min-height: 90vh;
-  min-width: 90vw;
+  max-width: 90vw;
   width: 60%;
   padding: 30px 30px 15px;
   box-sizing: border-box;
