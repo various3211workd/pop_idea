@@ -150,7 +150,11 @@
             <!-- draggble input form -->
             <!-- <draggable v-model="list" element="ul" :options="{animation:300}"> -->
               <div v-for="item in list" :key="item.id">
-                <input v-model="item.text" class="input is-large" type="text" style="width: 30%; max-width: 200px">
+                <input 
+                  v-model="item.text" 
+                  class="input is-large" 
+                  type="text" 
+                  v-on:keyup.enter="doAdd">
                 <br><br><br><br>
                 <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
                 <br><br><br>
@@ -322,5 +326,8 @@ export default {
   width: 100%;
   height: 100px;
 }
-
+.input {
+  width: 30%;
+  max-width: 200px;
+}
 </style>
