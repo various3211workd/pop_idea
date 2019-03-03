@@ -110,7 +110,7 @@
               
               <!-- modal window -->    
               <label for="trigger" class="open_button">Result</label>
-              <button class="reset_button" v-on:click="reset()">
+              <button class="reset_button" title="最初から始める" v-on:click="reset()">
                 <font-awesome-icon icon="sync-alt" />
               </button>
               <div class="modal_wrap">
@@ -147,21 +147,19 @@
             
             <br><br><br><br><br><br><br><br>
 
-            <!-- draggble input form -->
-            <!-- <draggable v-model="list" element="ul" :options="{animation:300}"> -->
-              <div v-for="item in list" :key="item.id">
-                <input 
-                  v-model="item.text" 
-                  class="input is-large" 
-                  type="text" 
-                  v-on:keyup.enter="doAdd">
-                <br><br><br><br>
-                <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
-                <br><br><br>
-              </div>
-              <br><br>
-            <!-- </draggable> -->
-
+            <div v-for="item in list" :key="item.id">
+              <input 
+                v-model="item.text" 
+                class="input is-large" 
+                type="text" 
+                :ref="item.id"
+                v-on:keyup.enter="doAdd" />
+              <br><br><br><br>
+              <font-awesome-icon class="icon is-large shoe" icon="shoe-prints" />
+              <br><br><br>
+            </div>
+            <br><br>
+            
             <!-- view signal graph, walk and stop button -->
             <div v-if="nextTodoId <= this.num + 1">
               <div class="sticky">
@@ -249,6 +247,7 @@ export default {
             id: this.nextTodoId++,
           })
           this.error_message = ""
+          this.$this.$nextTick(() => this.$refs.this.list.length.forcus())
         }
         else if( (this.list[0].text).slice(0,1) === (this.list[1].text).slice(-1) && this.list[0].text !== this.list[1].text ){
           if( this.list.length < this.num ) {
@@ -256,6 +255,8 @@ export default {
               text: this.message,
               id: this.nextTodoId++,
             })
+            this.error_message = ""
+            this.$this.$nextTick(() => this.$refs.this.list.length.forcus())
           } else { // clear
             this.nextTodoId++
             this.pop_flag = true
